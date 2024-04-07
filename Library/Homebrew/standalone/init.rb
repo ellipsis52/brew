@@ -40,7 +40,9 @@ if !gems_vendored && !ENV["HOMEBREW_SKIP_INITIAL_GEM_INSTALL"]
 end
 
 if Pathname.new(RbConfig.ruby).to_s.include?("/vendor/portable-ruby/")
-  $LOAD_PATH.unshift "#{RbConfig::CONFIG["rubylibprefix"]}/gems/#{RbConfig::CONFIG["ruby_version"]}/gems/debug-1.6.3/lib"
+  prefix = RbConfig::CONFIG["rubylibprefix"]
+  ruby_version = RbConfig::CONFIG["ruby_version"]
+  $LOAD_PATH.unshift "#{prefix}/gems/#{ruby_version}/gems/debug-1.6.3/lib"
 end
 
 unless $LOAD_PATH.include?(HOMEBREW_LIBRARY_PATH.to_s)
